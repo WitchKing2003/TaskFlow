@@ -2,16 +2,18 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/", workspacesController.getWorkSpace);
-router.post("/", workspacesController);
+router.post("/", workspacesController.createWorkspace);
 
-router.get("/:workspaceId", workspacesController);
-router.patch("/:workspaceId", workspacesController);
-router.delete("/:workspaceId", workspacesController);
+router.get("/:workspaceId", workspacesController.getWorkspaceById);
+router.patch("/:workspaceId", workspacesController.updateWorkspace);
+router.delete("/:workspaceId", workspacesController.deleteWorkspace);
 
-router.get("/:workspaceId/members", workspacesController);
-router.post("/:workspaceId/invitation", workspacesController);
-router.patch("/:workspaceId/members/:userId", workspacesController);
-router.delete("/:workspaceId/members/:userId", workspacesController);
+router.get("/:workspaceId/members", workspacesController.getWorkspaceMembers);
+router.post("/:workspaceId/invitation", workspacesController.inviteMember);
+router.patch("/:workspaceId/members/:userId", workspacesController.updateMemberRole);
+router.delete("/:workspaceId/members/:userId", workspacesController.removeWorkspaceMember);
+
+// router.get("")
 
 
 module.exports = workspacesRouter;
